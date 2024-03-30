@@ -25,5 +25,21 @@
       echo "Error: " . $sql . "<br>" . $conn->error;
   }
   
+  $sql = "SELECT Name, phone, address,item FROM orders";
+  $result = $conn->query($sql);
+
+  if ($result->num_rows > 0) {
+    // Output data of each row
+     while($row = $result->fetch_assoc()) {
+        echo "Name: " . $row["Name"]. ", Phone: " . $row["phone"]. ", address: " . $row["address"]. "item: ".$row["item"]. "<br>";
+     }
+  } 
+  else 
+  {
+    echo "No coffee items found";
+  }
+  
   // Close connection.
   $conn->close();
+  
+  ?>
